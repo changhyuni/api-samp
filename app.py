@@ -28,14 +28,8 @@ def Message():
             "template": {
                 "outputs": [
                     {
-                        "carousel": {
-                            "type" : "basicCard",
-                            "items": [
-                                {
-                                    "title" : "",
-                                    "description" : "안녕"
-                                }
-                            ]
+                        "simpleText": {
+                            "text": "간단한 테스트"
                         }
                     }
                 ]
