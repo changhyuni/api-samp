@@ -22,18 +22,6 @@ def Message():
     content = request.get_json()
     content = content['userRequest']
     content = content['utterance']
-            response_data = {
-                "version": "2.0",
-                "template": {
-                    "outputs": [
-                        {"simpleText": 
-                        "text": returnMenu(ChoiceUrl, ChoiceDay)}
-                        }
-                        ],
-                    "quickReplies": [{"label": "처음으로", "action": "message", "messageText": "처음으로"},
-                                     ]
-                }
-            }
     
     if content == u"안녕":
         dataSend = {
