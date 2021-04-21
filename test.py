@@ -27,7 +27,7 @@ def Message():
                             "items": [
                                 {
                                     "title" : "",
-                                    "description" : "안녕"
+                                    "description" : "인원"
                                 }
                             ]
                         }
