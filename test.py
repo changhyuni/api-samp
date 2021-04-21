@@ -48,7 +48,7 @@ def Message():
                 "outputs": [
                     {
                         "simpleText":{
-                            "text" : "아직 공부하고있습니다."
+                            "text" : f"{Samp()}"
                         }
                     }
                 ]
