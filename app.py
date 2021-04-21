@@ -3,8 +3,6 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-dateSend = {}
-
 def Samp():
     with SampClient(address='203.248.21.223', port=7777) as client:
         info = client.get_server_info()
@@ -23,8 +21,6 @@ def Message():
     content = request.get_json()
     content = content['userRequest']
     content = content['utterance']
-
-    global dataSend
 
     if content == u"인원":
         dataSend = {
