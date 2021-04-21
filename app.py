@@ -1,5 +1,5 @@
 from samp_client.client import SampClient
-from flask import Flask
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
@@ -9,10 +9,39 @@ def Samp():
         result = f"서버인원 {info.players}명", info.gamemode, info.hostname
     return str(result)
 
-@app.route("/api")
-def hello():
-    return Samp()
+@app.route('/keyboard')
+def Keyboard():
+    dataSend = {
+    }
+    return jsonify(dataSend)
+
+@app.route("/message", methods=['POST'])
+def Message():
+    
+    content = request.get_json()
+    content = content['userRequest']
+    content = content['utterance']
+
+    if content == u"인원":
+        dataSend = {
+            "version": "2.0",
+            "template": {
+                "outputs": [
+                    {
+                        "carousel": {
+                            "type" : "basicCard",
+                            "items": [
+                                {
+                                    "title" : "",
+                                    "description" : "안녕"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    return jsonify(dataSend)
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
+    app.run(debug=True, host='0.0.0.0')
