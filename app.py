@@ -4,11 +4,8 @@ import sys
 app = Flask(__name__)
 
 
-def Samp():
-    with SampClient(address='203.248.21.223', port=7777) as client:
-        info = client.get_server_info()
-        result = f"서버인원 {info.players}명", info.gamemode, info.hostname
-    return result
+with SampClient(address='203.248.21.223', port=7777) as client:
+    info = client.get_server_info()
 
 
 @app.route('/keyboard')
@@ -50,7 +47,7 @@ def Message():
                 "outputs": [
                     {
                         "simpleText":{
-                            "text" : f"{Samp()}"
+                            "text" : f"현재 서버인원은 {info.players}명\n" + f"{info.gamemode}\n라운드가 진행중입니다!"
                         }
                     }
                 ],
