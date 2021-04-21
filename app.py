@@ -1,5 +1,4 @@
 from samp_client.client import SampClient
-import jsonify
 from flask import Flask
 
 app = Flask(__name__)
