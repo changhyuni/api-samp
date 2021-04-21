@@ -43,10 +43,7 @@ def Message():
                 "outputs": [
                     {
                         "simpleText":{
-                            "text" : f"현재 서버인원은 {info.players} 명"
-                        },
-                         "simpleText":{
-                            "text" : f"{info.gamemode} 라운드가 진행중입니다!"
+                            "text" : f"현재 서버인원은 {info.players} 명\n" + f"{info.gamemode} 라운드가 진행중입니다!"
                         }
                     }
                 ]
