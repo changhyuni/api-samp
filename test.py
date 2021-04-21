@@ -3,17 +3,12 @@ from samp_client.client import SampClient
 import sys
 app = Flask(__name__)
 
-def Samp():
-    with SampClient(address='203.248.21.223', port=7777) as client:
-        info = client.get_server_info()
-        result = f"서버인원 {info.players}명", info.gamemode, info.hostname
-    return str(result)
+with SampClient(address='203.248.21.223', port=7777) as client:
+    info = client.get_server_info()
 
 @app.route('/keyboard')
 def Keyboard():
-    dataSend = {
-    }
-    return jsonify(dataSend)
+    return "test"
 
 @app.route('/message', methods=['POST'])
 def Message():
@@ -48,7 +43,7 @@ def Message():
                 "outputs": [
                     {
                         "simpleText":{
-                            "text" : f"{Samp()}"
+                            "text" : f"현재 서버인원은 {info.players} 명입니다"
                         }
                     }
                 ]
@@ -57,4 +52,4 @@ def Message():
     return jsonify(dataSend)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run(debug=True,host='0.0.0.0')

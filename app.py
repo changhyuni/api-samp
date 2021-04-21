@@ -1,7 +1,8 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from samp_client.client import SampClient
 import sys
 app = Flask(__name__)
+
 
 def Samp():
     with SampClient(address='203.248.21.223', port=7777) as client:
