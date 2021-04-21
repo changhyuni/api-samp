@@ -9,11 +9,11 @@ def Samp():
         result = f"서버인원 {info.players}명", info.gamemode, info.hostname
     return str(result)
 
-@app.route('/keyboard')
-def Keyboard():
-    dataSend = {
-    }
-    return jsonify(dataSend)
+# @app.route('/keyboard')
+# def Keyboard():
+#     dataSend = {
+#     }
+#     return jsonify(dataSend)
 
 @app.route("/message", methods=['POST'])
 def Message():
