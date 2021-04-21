@@ -22,6 +22,8 @@ def Message():
     content = content['userRequest']
     content = content['utterance']
 
+    global dataSend
+
     if content == u"인원":
         dataSend = {
             "version": "2.0",
