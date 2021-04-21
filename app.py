@@ -3,6 +3,8 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
+dateSend = {}
+
 def Samp():
     with SampClient(address='203.248.21.223', port=7777) as client:
         info = client.get_server_info()
