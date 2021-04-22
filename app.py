@@ -24,7 +24,9 @@ def Message():
         for i in info:
             lst.append(i[1])
         
-        result = str(lst)
+        ## 최종 결과
+        result = ','
+        string = result.join(lst)
         
     
     content = request.get_json()
@@ -57,7 +59,7 @@ def Message():
                 "outputs": [
                     {
                         "simpleText":{
-                            "text" : f"현재 서버 인원은 {players.players}명입니다!\n" + "\n" + "<플레이어 목록>\n" + f"{result[0]}"
+                            "text" : f"현재 서버 인원은 {players.players}명입니다!\n" + "\n" + "<플레이어 목록>\n" + f"{string}"
                         }
                     }
                 ],
