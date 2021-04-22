@@ -26,7 +26,7 @@ def Message():
         
         ## 최종 결과
         result = ','
-        string = result.join(lst+"\n")
+        string = result.join(lst)
         
     
     content = request.get_json()
