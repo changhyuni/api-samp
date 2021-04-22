@@ -17,12 +17,15 @@ def Keyboard():
 
 @app.route('/message', methods=['POST'])
 def Message():
-    result = []
+    lst = []
     with SampClient(address='203.248.21.223', port=7777) as client:
         info = client.get_server_clients_detailed()
         players = client.get_server_info()
         for i in info:
-            result.append(i[1])
+            lst.append(i[1])
+        
+        result = str(lst)
+        
     
     content = request.get_json()
     content = content['userRequest']
@@ -54,7 +57,7 @@ def Message():
                 "outputs": [
                     {
                         "simpleText":{
-                            "text" : f"현재 서버 인원은 {players.players}명입니다!\n" + "\n" + "<플레이어 목록>\n" + f"{str(result)}"
+                            "text" : f"현재 서버 인원은 {players.players}명입니다!\n" + "\n" + "<플레이어 목록>\n" + f"{result}"
                         }
                     }
                 ],
