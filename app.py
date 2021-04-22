@@ -3,19 +3,25 @@ from samp_client.client import SampClient
 import sys
 app = Flask(__name__)
 
+# def Samp():
+#     with SampClient(address='203.248.21.223', port=7777) as client:
+#         info = client.get_server_clients_detailed()
+#         return str(info)
 
-with SampClient(address='203.248.21.223', port=7777) as client:
-    info = client.get_server_info()
+
 
 
 @app.route('/keyboard')
 def Keyboard():
-    dataSend = {
-    }
-    return jsonify(dataSend)
+    return "hello"
 
 @app.route('/message', methods=['POST'])
 def Message():
+    result = []
+    with SampClient(address='203.248.21.223', port=7777) as client:
+        info = client.get_server_clients_detailed()
+        for i in info:
+            result.append(i[1])
     
     content = request.get_json()
     content = content['userRequest']
@@ -47,7 +53,7 @@ def Message():
                 "outputs": [
                     {
                         "simpleText":{
-                            "text" : f"현재 서버인원은 {info.players}명\n" + f"{info.gamemode}\n라운드가 진행중입니다!"
+                            "text" : f"{str(result)}"
                         }
                     }
                 ],
