@@ -20,6 +20,7 @@ def Message():
     result = []
     with SampClient(address='203.248.21.223', port=7777) as client:
         info = client.get_server_clients_detailed()
+        players = client.get_server_info()
         for i in info:
             result.append(i[1])
     
@@ -53,7 +54,7 @@ def Message():
                 "outputs": [
                     {
                         "simpleText":{
-                            "text" : f"{str(result)}"
+                            "text" : f"현재 서버 인원은 {players.players}명입니다!\n" + f"{str(result)}"
                         }
                     }
                 ],
