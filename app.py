@@ -22,7 +22,7 @@ def Message():
         info = client.get_server_clients_detailed()
         players = client.get_server_info()
         for i in info:
-            lst.append(i[1])
+            lst.append(i[1]+"\n")
         
         ## 최종 결과
         result = ','
