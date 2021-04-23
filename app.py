@@ -66,6 +66,7 @@ def Message():
                 ],
                 "quickReplies": [
                     {"label": "인원", "action": "message", "messageText": "인원"},
+                    {"label": "도움말", "action": "message", "messageText": "도움말"}
                 ]
             }
         }
