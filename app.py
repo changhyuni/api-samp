@@ -37,8 +37,8 @@ def Message():
     round_info = ''
     if players.gamemode == 'Att-Def v1.23 (r)':
         round_info = "라운드 진행중이 아닙니다."
-        else:
-            round_info = f"라운드 {players.gamemode}가 진행중입니다!"
+    else:
+        round_info = f"라운드 {players.gamemode}가 진행중입니다!"
     
     if content == u"안녕":
         dataSend = {
