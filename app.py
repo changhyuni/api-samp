@@ -66,7 +66,7 @@ def Message():
                 "outputs": [
                     {
                         "simpleText":{
-                            "text" : f"현재 서버 인원은 {players.players}명입니다!\n" + "\n" + "<플레이어 목록>\n" + f"{string}" + f"{round_info}"
+                            "text" : f"현재 서버 인원은 {players.players}명입니다!\n" + "\n" + "<플레이어 목록>\n" + f"{string}\n" + f"{round_info}"
                         }
                     }
                 ],
