@@ -33,6 +33,12 @@ def Message():
     content = request.get_json()
     content = content['userRequest']
     content = content['utterance']
+
+    round_info = ''
+    if players.gamemode == 'Att-Def v1.23 (r)':
+        round_info = "라운드 진행중이 아닙니다."
+        else:
+            round_info = f"라운드 {players.gamemode}가 진행중입니다!"
     
     if content == u"안녕":
         dataSend = {
@@ -60,7 +66,7 @@ def Message():
                 "outputs": [
                     {
                         "simpleText":{
-                            "text" : f"현재 서버 인원은 {players.players}명입니다!\n" + "\n" + "<플레이어 목록>\n" + f"{string}" + f"라운드 {players.gamemode}가 진행중입니다!"
+                            "text" : f"현재 서버 인원은 {players.players}명입니다!\n" + "\n" + "<플레이어 목록>\n" + f"{string}" + f"라운드 {round_info}가 진행중입니다!"
                         }
                     }
                 ],
