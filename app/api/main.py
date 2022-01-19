@@ -32,7 +32,7 @@ async def root(arbitrary_json: JSONStructure = None):
             "outputs": [
                 {
                     "simpleText":{
-                        "text" : "현재 "f'{players}'"명이 " f'{round_info} ' "중입니다!"
+                        "text" : "현재서버에 "f'{players}'"명이 " f'{round_info} ' "중입니다!"
                     }
                 }
             ],
