@@ -18,7 +18,24 @@ JSONStructure = Union[JSONArray, JSONObject]
 
 @app.post("/")
 async def root(arbitrary_json: JSONStructure = None):
-    return {"received_data": arbitrary_json}
+    content = {
+        "version": "2.0",
+        "template": {
+            "outputs": [
+                {
+                    "simpleText":{
+                        "text" : f"{ServerInfo}"
+                    }
+                }
+            ],
+            "quickReplies": [
+                {"label": "인원", "action": "message", "messageText": "인원"},
+                {"label": "도움말", "action": "message", "messageText": "도움말"},
+                {"label": "기능", "action": "message", "messageText": "기능"}
+                ]
+            }
+        }
+    return content
 
 # with open('./skill.json', 'r') as f:
 #     json_data = json.load(f)
