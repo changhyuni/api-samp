@@ -7,7 +7,7 @@ import json
 
 
 with SampClient(address='14.35.79.33', port=7777) as client:
-    ServerInfo = client.get_server_clients_detailed()
+    ServerInfo = client.get_server_info()
 
 app = FastAPI()
 
@@ -15,16 +15,24 @@ JSONObject = Dict[AnyStr, Any]
 JSONArray = List[Any]
 JSONStructure = Union[JSONArray, JSONObject]
 
+players = ServerInfo.players
+round_info = ''
+
+@app.get('/heartbeat')
+async def health_check():                   
+    return "OK"
 
 @app.post("/")
 async def root(arbitrary_json: JSONStructure = None):
+    round_info = '대기' if ServerInfo.gamemode == 'Att-Def v1.23 (r)' else '게임'
+
     content = {
         "version": "2.0",
         "template": {
             "outputs": [
                 {
                     "simpleText":{
-                        "text" : f"{ServerInfo}"
+                        "text" : "현재 "f'{players}'"명이 " f'{round_info} ' "중입니다!"
                     }
                 }
             ],
@@ -37,11 +45,5 @@ async def root(arbitrary_json: JSONStructure = None):
         }
     return content
 
-# with open('./skill.json', 'r') as f:
-#     json_data = json.load(f)
-
-@app.get('/heartbeat')
-async def health_check():                   
-    return "OK"
 
 
