@@ -5,17 +5,12 @@ from pydantic import BaseModel
 from typing import Optional, List, Any, Dict, AnyStr, Union
 import json
 
-
-with SampClient(address='14.35.79.33', port=7777) as client:
-    ServerInfo = client.get_server_info()
-
 app = FastAPI()
 
 JSONObject = Dict[AnyStr, Any]
 JSONArray = List[Any]
 JSONStructure = Union[JSONArray, JSONObject]
 
-players = ServerInfo.players
 round_info = ''
 
 @app.get('/heartbeat')
@@ -24,6 +19,11 @@ async def health_check():
 
 @app.post("/")
 async def root(arbitrary_json: JSONStructure = None):
+    with SampClient(address='14.35.79.33', port=7777) as client:
+        ServerInfo = client.get_server_info()
+    
+    round_info = ''
+    players = ServerInfo.players
     round_info = '대기' if ServerInfo.gamemode == 'Att-Def v1.23 (r)' else '게임'
 
     content = {
