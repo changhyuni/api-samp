@@ -19,8 +19,17 @@ async def health_check():
 
 @app.post("/")
 async def root(arbitrary_json: JSONStructure = None):
+
+    Str = ''
     with SampClient(address='14.35.79.33', port=7777) as client:
         ServerInfo = client.get_server_info()
+        UserInfo = client.get_server_clients()
+    
+    for User in UserInfo:
+        Str += User.name + '\n'
+
+    
+
     
     round_info = ''
     players = ServerInfo.players
@@ -32,9 +41,9 @@ async def root(arbitrary_json: JSONStructure = None):
             "outputs": [
                 {
                     "simpleText":{
-                        "text" : "현재서버에 "f'{players}'"명이 " f'{round_info} ' "중입니다!"
-                    }
+                        "text" : "현재서버에 "f'{players}'"명이 " f'{round_info} ' "중입니다! "f'{Str}'""
                 }
+              }
             ],
             "quickReplies": [
                 {"label": "인원", "action": "message", "messageText": "인원"},
