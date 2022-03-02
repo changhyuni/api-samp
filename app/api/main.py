@@ -25,15 +25,26 @@ async def root(arbitrary_json: JSONStructure = None):
         ServerInfo = client.get_server_info()
         UserInfo = client.get_server_clients()
     
+
+    with SampClient(address='14.35.79.33', port=7777) as client:
+        TwoServerInfo = client.get_server_info()
+        TwoUserInfo = client.get_server_clients()
+
     for User in UserInfo:
         UserList += User.name + '\n'
+
+    for TwoUser in TwoUserInfo:
+        TwoUserList += TwoUser.name + '\n'
 
     
 
     
     round_info = ''
     players = ServerInfo.players
-    round_info = '대기' if ServerInfo.gamemode == 'Att-Def v1.23 (r)' else '게임'
+    Twoplayers = TwoServerInfo.players
+
+    Tworound_info = '대기' if TwoServerInfo.gamemode == 'Att-Def v1.23 (r)' else '게임'
+    round_info = '대기' if TwoServerInfo.gamemode == 'Att-Def v1.23 (r)' else '게임'
 
     content = {
         "version": "2.0",
@@ -41,7 +52,9 @@ async def root(arbitrary_json: JSONStructure = None):
             "outputs": [
                 {
                     "simpleText":{
-                        "text" : "현재서버에 "f'{players}'"명이 " f'{round_info} ' "중입니다! \n\n<유저리스트>\n"f'{UserList}'""                      
+                        "text" : "현재 1서버에 "f'{players}'"명이 " f'{round_info} ' "중입니다! \n\n<유저리스트>\n"f'{UserList}'"",
+                        "text" : "현재 2서버에 "f'{Twoplayers}'"명이 " f'{Tworound_info} ' "중입니다! \n\n<유저리스트>\n"f'{UserList}'"",
+
                 }
               }
             ],
