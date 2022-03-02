@@ -53,7 +53,7 @@ async def root(arbitrary_json: JSONStructure = None):
             "outputs": [
                 {
                     "simpleText":{
-                        "text" : "1서버에 "f'{players}'"명이 " f'{round_info} ' "중입니다! \n\n<유저리스트>\n"f'{UserList}'" \n2서버에 "f'{Twoplayers}'"명이 " f'{Tworound_info} ' "중입니다! \n\n<유저리스트>\n"f'{TwoUserList}'""
+                        "text" : "1서버에 "f'{players}'"명이 " f'{round_info} ' "중입니다! \n\n<유저리스트>\n"f'{UserList}'"\n2서버에 "f'{Twoplayers}'"명이 " f'{Tworound_info} ' "중입니다! \n\n<유저리스트>\n"f'{TwoUserList}'""
 
                 }
               }
