@@ -46,19 +46,20 @@ async def root(arbitrary_json: JSONStructure = None):
 
     
     round_info = ''
-    players = ServerInfo.players
+    # players = ServerInfo.players
     Twoplayers = TwoServerInfo.players
 
     Tworound_info = '대기' if TwoServerInfo.gamemode == 'Att-Def v1.23 (r)' else '게임'
     round_info = '대기' if TwoServerInfo.gamemode == 'Att-Def v1.23 (r)' else '게임'
-# "\n2서버에 "f'{Twoplayers}'"명이 " f'{Tworound_info} ' "중입니다! \n\n<유저리스트>\n"f'{TwoUserList}'"
+    
+# 1서버에 "f'{players}'"명이 " f'{round_info} ' "중입니다! \n\n<유저리스트>\n"f'{UserList}'"
     content = {
         "version": "2.0",
         "template": {
             "outputs": [
                 {
                     "simpleText":{
-                        "text" : "1서버에 "f'{players}'"명이 " f'{round_info} ' "중입니다! \n\n<유저리스트>\n"f'{UserList}'""
+                        "text" : "2서버에 "f'{Twoplayers}'"명이 " f'{Tworound_info} ' "중입니다! \n\n<유저리스트>\n"f'{TwoUserList}'""
 
                 }
               }
